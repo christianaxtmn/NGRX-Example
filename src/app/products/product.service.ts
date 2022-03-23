@@ -17,7 +17,6 @@ export class ProductService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl)
       .pipe(
-        tap(data => console.log(JSON.stringify(data))),
         catchError(this.handleError)
       );
   }
@@ -29,7 +28,6 @@ export class ProductService {
     const newProduct = { ...product, id: null };
     return this.http.post<Product>(this.productsUrl, newProduct, { headers })
       .pipe(
-        tap(data => console.log('createProduct: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
   }
