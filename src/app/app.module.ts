@@ -20,6 +20,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import {appReducer} from './store/product.reducer';
+import {ProductEffect} from "./store/product.effect";
 
 @NgModule({
   imports: [
@@ -29,11 +31,12 @@ import { EffectsModule } from '@ngrx/effects';
     UserModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
+    StoreModule.forFeature('app', appReducer),
+    EffectsModule.forRoot([ProductEffect]),
     StoreDevtoolsModule.instrument({
       name: 'APM Demo App Devtools',
       maxAge: 25,
       logOnly: environment.production }),
-    EffectsModule.forRoot([])
   ],
   declarations: [
     AppComponent,

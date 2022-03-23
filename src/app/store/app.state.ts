@@ -1,6 +1,9 @@
-import {UserState} from '../user/state/user.reducer';
+import {Product} from "../products/product";
 
-export interface State {
-  user: UserState;
+export interface AppState {
+  showProductCode: boolean;
+  currentProductId: number | null;
+  products: Product[];
+  error: string;
 }
 

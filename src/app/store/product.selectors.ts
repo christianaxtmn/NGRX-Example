@@ -1,20 +1,20 @@
 import {createFeatureSelector, createSelector} from '@ngrx/store';
-import {ProductState} from './product.reducer';
+import {AppState} from './app.state';
 
-const getProductFeatureState = createFeatureSelector<ProductState>('products');
+const getAppState = createFeatureSelector<AppState>('app');
 
 export const getShowProductCode = createSelector(
-  getProductFeatureState,
+  getAppState,
   state => state.showProductCode
 );
 
 export const getCurrentProductId = createSelector(
-  getProductFeatureState,
+  getAppState,
   state => state.currentProductId
 );
 
 export const getCurrentProduct = createSelector(
-  getProductFeatureState,
+  getAppState,
   getCurrentProductId,
   (state, currentProductId) => {
     if (currentProductId === 0) {
@@ -33,11 +33,11 @@ export const getCurrentProduct = createSelector(
 );
 
 export const getProducts = createSelector(
-  getProductFeatureState,
+  getAppState,
   state => state.products
 );
 
 export const getError = createSelector(
-  getProductFeatureState,
+  getAppState,
   state => state.error
 );

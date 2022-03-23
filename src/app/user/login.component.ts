@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
 import {Store} from '@ngrx/store';
-import {State} from '../store/app.state';
 import {getMaskUserName} from './state/user.reducer';
+import {AppState} from "../store";
 
 @Component({
   templateUrl: './login.component.html',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   maskUserName: boolean;
 
-  constructor(private authService: AuthService, private router: Router, private store: Store<any>) { }
+  constructor(private authService: AuthService, private router: Router, private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.store.select(getMaskUserName).subscribe(

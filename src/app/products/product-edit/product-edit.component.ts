@@ -9,9 +9,9 @@ import {GenericValidator} from '../../shared/generic-validator';
 import {NumberValidators} from '../../shared/number.validator';
 
 import {Store} from '@ngrx/store';
-import {getCurrentProduct, State} from '../state';
 import {tap} from 'rxjs/operators';
-import {ProductPageActions} from '../state/actions';
+import {ProductPageActions} from '../../store/actions';
+import {AppState, getCurrentProduct} from "../../store";
 
 @Component({
   selector: 'pm-product-edit',
@@ -28,7 +28,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   private genericValidator: GenericValidator;
   product$: Observable<Product>;
 
-  constructor(private store: Store<State>, private fb: FormBuilder, private productService: ProductService) {
+  constructor(private store: Store<AppState>, private fb: FormBuilder, private productService: ProductService) {
 
     // Defines all of the validation messages for the form.
     // These could instead be retrieved from a file or database.

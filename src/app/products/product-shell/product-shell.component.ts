@@ -4,8 +4,7 @@ import {Observable} from 'rxjs';
 import {Product} from '../product';
 import {ProductService} from '../product.service';
 import {Store} from '@ngrx/store';
-import {getCurrentProduct, getError, getProducts, getShowProductCode, State} from '../state';
-import {ProductPageActions} from '../state/actions';
+import {AppState, getCurrentProduct, getError, getProducts, getShowProductCode, ProductPageActions} from '../../store';
 
 @Component({
   templateUrl: './product-shell.component.html'
@@ -18,7 +17,7 @@ export class ProductShellComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private store: Store<State>) {
+    private store: Store<AppState>) {
   }
 
   ngOnInit(): void {
